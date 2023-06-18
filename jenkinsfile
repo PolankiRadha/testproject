@@ -4,7 +4,7 @@ pipeline {
     	stage('Git Checkout') {
         	steps {
           	checkout([$class: 'GitSCM',
-            	branches: [[name: '*/master']],
+            	branches: [[name: '*/core']],
             	doGenerateSubmoduleConfigurations: false,
             	extensions: [[$class: 'CleanCheckout']],
             	submoduleCfg: [],
@@ -14,8 +14,8 @@ pipeline {
     	}
     	stage('Development'){
         	steps {
-   	          sh 'sudo rm -rf /var/www/html/dev/'
-   	          sh 'sudo mkdir /var/www/html/dev/'
+   	        sh 'sudo rm -rf /var/www/html/dev/'
+   	        sh 'sudo mkdir /var/www/html/dev/'
             	sh 'sudo systemctl start httpd'
             	sh 'sudo git clone https://github.com/PolankiRadha/testproject.git /var/www/html/dev'
         	}
