@@ -10,7 +10,7 @@ pipeline {
             	submoduleCfg: [],
             	userRemoteConfigs: [[url: 'https://github.com/PolankiRadha/testproject.git']]])
              	sh "ls -ltr"
-      	}
+      	   }
     	}
     	stage('Development'){
         	steps {
@@ -18,7 +18,7 @@ pipeline {
    	        sh 'sudo mkdir /var/www/html/dev/'
             	sh 'sudo systemctl start httpd'
             	sh 'sudo git clone https://github.com/PolankiRadha/testproject.git /var/www/html/dev'
-        	}
+           }
     	}
     	stage('QA'){
         	steps {
@@ -34,7 +34,7 @@ pipeline {
             	sh 'sudo mkdir /var/www/html/prod'
             	sh 'sudo systemctl start httpd'
             	sh 'sudo git clone https://github.com/PolankiRadha/testproject.git /var/www/html/prod'
-         	}
+        	}
     	}   	 
-	}
+    }
 }
